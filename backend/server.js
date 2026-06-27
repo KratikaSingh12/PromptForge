@@ -13,12 +13,13 @@ import authRoutes from './routes/authRoutes.js';
 import geminiRoutes from './routes/gen.js';
 import './config/passport.js';
 import http from 'http';
-import {initSocketHandler} from './controllers/geminiController.js';
+import { initSocketHandler } from './controllers/geminiController.js';
 
 dotenv.config();
 await connectDB();
 
 const app = express();
+app.set('trust proxy', 1);
 
 const server = http.createServer(app);
 initSocketHandler(server);
@@ -31,15 +32,17 @@ app.use(
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
+    cookie: {
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+    },
   })
 );
 app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/auth', authRoutes);
-app.use('/gen', geminiRoutes); 
-
-
+app.use('/gen', geminiRoutes);
 
 server.listen(process.env.PORT, () =>
   console.log(`Backend http://localhost:${process.env.PORT}`)
