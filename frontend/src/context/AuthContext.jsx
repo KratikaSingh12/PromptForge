@@ -21,7 +21,7 @@ export const AuthProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true); // Add this
 
   useEffect(() => {
-    fetch('http://localhost:5000/auth/me', {
+    fetch(`${import.meta.env.VITE_API_URL}/auth/me`, {
       credentials: 'include',
     })
       .then(res => {
@@ -51,11 +51,11 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const login = () => {
-    window.location.href = 'http://localhost:5000/auth/github';
+    window.location.href = `${import.meta.env.VITE_API_URL}/auth/github`;
   };
 
   const logout = () => {
-    fetch('http://localhost:5000/auth/logout', {
+    fetch(`${import.meta.env.VITE_API_URL}/auth/logout`, {
       method: 'GET',
       credentials: 'include',
     }).finally(() => {
