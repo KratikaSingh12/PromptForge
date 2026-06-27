@@ -1,4 +1,7 @@
 // backend/server.js
+import dns from 'dns';
+dns.setServers(['8.8.8.8', '8.8.4.4']);
+
 import express from 'express';
 import cors from 'cors';
 import session from 'express-session';
@@ -20,7 +23,7 @@ const app = express();
 const server = http.createServer(app);
 initSocketHandler(server);
 
-app.use(cors({ origin: 'http://localhost:5173', credentials: true }));
+app.use(cors({ origin: process.env.FRONTEND_URL || 'http://localhost:5173', credentials: true }));
 app.use(express.json());
 
 app.use(
