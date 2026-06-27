@@ -4,7 +4,7 @@
 
 PromptForge lets users describe a machine learning problem in plain English and instantly receive production-ready code, optimized model pipelines, and relevant dataset recommendations — turning natural language into working ML solutions in minutes.
 
-[**Live Demo →**](https://your-app.vercel.app) *(update with your deployed URL)*
+[**Live Demo →**](https://prompt-forge-two-olive.vercel.app)
 
 ---
 
@@ -23,15 +23,6 @@ Building a machine learning model traditionally requires navigating dataset sele
 - **One-Click Notebook Export** — Download ready-to-run Jupyter Notebooks (`.ipynb`)
 - **Session History** — Revisit previous conversations, generated code, and datasets at any time
 - **GitHub Authentication** — Secure sign-in via GitHub OAuth
-
-### Performance
-
-| Metric | Score |
-|---|---|
-| Performance | 96 |
-| Accessibility | 100 |
-| Best Practices | 93 |
-| SEO | 100 |
 
 ---
 
